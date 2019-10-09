@@ -5,13 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <title>mian-project</title>
     <script type="systemjs-importmap">
       {
         "imports": {
           "goods": "http://localhost:9010/app.js",
           "customers": "http://localhost:5100/app.js",
-           "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js"
+           "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js",
+           "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js",
+          "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.0.7/dist/vue-router.min.js",
+          "element-ui":"https://unpkg.com/element-ui/lib/index.js"
         }
       }
     </script>
@@ -28,7 +32,7 @@
     </noscript>
     <div id="app"></div>
     <script>
-      Promise.all([System.import('single-spa')]).then((modules) => {
+      Promise.all([System.import('single-spa'),System.import('vue'), System.import('vue-router'),System.import('element-ui')]).then((modules) => {
         const singleSpa = modules[0];
         singleSpa.registerApplication('goods',() => System.import('goods'),location => {
 
