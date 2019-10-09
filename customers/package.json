@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "single-spa-vue": "^1.5.2",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3"
   },
@@ -26,6 +27,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "vue-cli-plugin-single-spa": "^1.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

@@ -6,6 +6,8 @@
       <router-link to="/other/customers">客户管理</router-link>
     </div>
     <router-view/>
+    <div id="goods"></div>
+    <div id="customers"></div>
   </div>
 </template>
 

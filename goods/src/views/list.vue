@@ -3,7 +3,7 @@
   <div class="search">
       <el-input v-model="input" placeholder="请输入关键字" style="width: 300px" size="mini"></el-input>
   </div>
-   <div class="item" @click="$router.push('/detail')">
+   <div class="item" @click="$router.push('/other/goods/detail')">
      <img src="https://img.zcool.cn/community/01cce05699ce9a6ac725af2377a0a2.jpg@3000w_1l_0o_100sh.jpg">
      <p>草莓</p>
    </div>

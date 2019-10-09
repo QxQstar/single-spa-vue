@@ -14,7 +14,7 @@ export default {
   name: 'home',
   methods:{
     gotoDetail(){
-      this.$router.push('/detail')
+      this.$router.push('/other/customers/detail')
     }
   }
 }

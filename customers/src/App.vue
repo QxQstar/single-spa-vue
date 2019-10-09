@@ -1,11 +1,11 @@
 <template>
-  <div id="app">
+  <div id="customers">
     <router-view/>
   </div>
 </template>
 
 <style lang="less">
-#app {
+  #customers {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
