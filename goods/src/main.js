@@ -2,6 +2,7 @@ import './set-public-path';
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+import store from './store/base';
 import singleSpaVue from 'single-spa-vue';
 import ElementUI from 'element-ui'
 Vue.use(ElementUI)
@@ -12,6 +13,7 @@ const vueLifecycles = singleSpaVue({
     el:'#goods',
     render: (h) => h(App),
     router,
+    store
   },
 });
 

@@ -7,6 +7,12 @@
      <img src="https://img.zcool.cn/community/01cce05699ce9a6ac725af2377a0a2.jpg@3000w_1l_0o_100sh.jpg">
      <p>草莓</p>
    </div>
+
+  <div>
+      <p>你选择了{{$store.state.count}}个草莓</p>
+
+      <el-button @click="$store.commit('increment')">增加商品</el-button>
+  </div>
   </div>
 </template>
 

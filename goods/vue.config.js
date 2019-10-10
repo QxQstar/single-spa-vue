@@ -5,7 +5,7 @@ module.exports = {
     },
     publicPath:'',
     chainWebpack: config => {
-        config.externals(['vue', 'vue-router','element-ui'])
+        config.externals(['vue', 'vue-router','element-ui','vuex'])
     },
     filenameHashing: false,
 }
