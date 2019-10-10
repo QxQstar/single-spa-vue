@@ -12,6 +12,16 @@
       <p>你选择了{{$store.state.count}}个草莓</p>
 
       <el-button @click="$store.commit('increment')">增加商品</el-button>
+
+
+      <hr/>
+        <ul>
+            <li v-for="item in resData">
+                <span>ID: {{item.id}}</span> | <span>name: {{item.name}}</span>
+
+            </li>
+        </ul>
+
   </div>
   </div>
 </template>
@@ -23,8 +33,22 @@ export default {
   name: 'home',
     data(){
       return {
-          input:''
+          input:'',
+          resData:[]
       }
+    },
+    created() {
+        this.http({
+            url:'/vender/api/getInfo',
+            method: 'post',
+            params:{
+                venderId:10004
+            }
+        }).then(res => {
+            if(res.data.ret + '' === '0') {
+                this.resData = res.data.content.warehouse_ids
+            }
+        })
     }
 }
 </script>

@@ -1,7 +1,11 @@
 module.exports = {
     lintOnSave:false,
     devServer:{
-        port:9100
+        port:9100,
+        proxy: 'http://saas1.market-mis.wmdev2.lsh123.com'
     },
     publicPath:'',
+    // chainWebpack: config => {
+    //     config.externals(['axios'])
+    // },
 }

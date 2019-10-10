@@ -5,6 +5,7 @@ import router from './router';
 import store from './store/base';
 import singleSpaVue from 'single-spa-vue';
 import ElementUI from 'element-ui'
+import './http.js'
 Vue.use(ElementUI)
 Vue.config.productionTip = false;
 const vueLifecycles = singleSpaVue({
