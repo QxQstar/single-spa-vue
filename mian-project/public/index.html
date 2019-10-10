@@ -38,13 +38,13 @@
 
           var hashVal = location.hash.slice(2),
                   haseArr = hashVal.split('/');
-          return haseArr[0] === 'other' && haseArr[1] === 'goods';
+          return  haseArr[0] === 'goods';
         })
 
         singleSpa.registerApplication('customers',() => System.import('customers'),location => {
           var hashVal = location.hash.slice(2),
                   haseArr = hashVal.split('/');
-          return haseArr[0] === 'other' && haseArr[1] === 'customers';
+          return haseArr[0] === 'customers';
         })
       singleSpa.start();
       })

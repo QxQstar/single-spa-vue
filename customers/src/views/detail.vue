@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <router-link to="/other/customers">返回</router-link>
+    <router-link to="/customers">返回</router-link>
     <div class="msg">
       <img src="https://avatars1.githubusercontent.com/u/17845091?s=460&v=4">
 

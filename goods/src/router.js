@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import list from './views/list.vue'
-import detail from './views/detail.vue'
+// import detail from './views/detail.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/other/goods',
+      path: '/goods',
       name: 'home',
       component: list
     },
     {
-      path: '/other/goods/detail',
+      path: '/goods/detail',
       name: 'detail',
       // component:detail
       // route level code-splitting
