@@ -1,7 +1,7 @@
 <template>
     <div class="c-sideNav">
         <el-menu
-                default-active="1" :default-openeds="[1]"
+                :default-active="activeIndex" :default-openeds="['1']"
                 @select="select"
                 class="el-menu-vertical-demo">
             <el-submenu index="1">
@@ -35,6 +35,17 @@
             },
             menu() {
                 return this.menuObj.children || [];
+            },
+            activeIndex() {
+                const path = this.$route.path;
+                let index = 0;
+                this.menu.some((item,i) => {
+                    if(path === item.path || item.subPage && item.subPage.includes(path)) {
+                        index = i;
+                        return true;
+                    }
+                })
+                return index + '';
             }
         },
         methods:{

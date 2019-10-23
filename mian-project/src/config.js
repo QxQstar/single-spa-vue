@@ -5,7 +5,8 @@ export default {
         children:[
             {
                 path:'/goods/list',
-                name:'商品列表'
+                name:'商品列表',
+                subPage:['/goods/detail'],
             },
             {
                 path:'/goods/new',
@@ -19,7 +20,8 @@ export default {
         children:[
             {
                 path:'/customers/list',
-                name:'顾客列表'
+                name:'顾客列表',
+                subPage:['/customers/detail']
             },
             {
                 path:'/customers/new',

@@ -8,7 +8,6 @@ vue.use(Router)
   routes: [
     {
       path:'/account',
-      
       component:() => import(/* webpackChunkName: "login" */ './views/login.vue')
     },
     {
@@ -19,7 +18,7 @@ vue.use(Router)
           path: '',
           meta:{
             // 是否显示左侧菜单
-            sideNav:true
+            hiddenSideNav:true
           },
           component: Home
         },
