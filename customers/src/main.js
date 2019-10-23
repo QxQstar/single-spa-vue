@@ -1,15 +1,15 @@
 import './set-public-path';
-import Vue from 'vue';
+import vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import singleSpaVue from 'single-spa-vue';
 
-Vue.config.productionTip = false;
+vue.config.productionTip = false;
 
 const vueLifecycles = singleSpaVue({
-  Vue,
+  Vue:vue,
   appOptions: {
-    el:'#customers',
+    el:'#main',
     render: (h) => h(App),
     router,
   },

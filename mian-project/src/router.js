@@ -1,18 +1,18 @@
-import Vue from 'vue'
+import vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 
-Vue.use(Router)
+vue.use(Router)
 
  const router = new Router({
   routes: [
     {
       path:'/account',
-      component:() => import('./views/login.vue')
+      component:() => import(/* webpackChunkName: "login" */ './views/login.vue')
     },
     {
       path:'/',
-      component:() => import('./views/main.vue'),
+      component:() => import(/* webpackChunkName: "main" */ './views/main.vue'),
       children:[
         {
           path: '',
@@ -20,11 +20,10 @@ Vue.use(Router)
         },
         {
           path:'/about',
-          component:() => import('./views/About.vue')
+          component:() => import(/* webpackChunkName: "About" */ './views/About.vue')
         },
         {
           path:'*',
-
         }
       ]
     }

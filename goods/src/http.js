@@ -1,10 +1,10 @@
 import axios from "axios";
-import Vue from 'vue'
+import vue from 'vue'
 const instance = axios.create({
     timeout: 1000,
     headers:{
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     }
 });
-Vue.prototype.http = instance;
+vue.prototype.http = instance;
 export default  instance

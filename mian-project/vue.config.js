@@ -5,7 +5,7 @@ module.exports = {
         proxy: 'http://saas1.market-mis.wmdev2.lsh123.com'
     },
     publicPath:'',
-    // chainWebpack: config => {
-    //     config.externals(['axios'])
-    // },
+    chainWebpack: config => {
+        config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'ELEMENT'}])
+    },
 }

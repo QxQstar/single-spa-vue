@@ -1,17 +1,17 @@
 import './set-public-path';
-import Vue from 'vue';
+import vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store/base';
 import singleSpaVue from 'single-spa-vue';
-import ElementUI from 'element-ui'
+import elementUI from 'element-ui'
 import './http.js'
-Vue.use(ElementUI)
-Vue.config.productionTip = false;
+vue.use(elementUI)
+vue.config.productionTip = false;
 const vueLifecycles = singleSpaVue({
-  Vue,
+  Vue:vue,
   appOptions: {
-    el:'#goods',
+    el:'#main',
     render: (h) => h(App),
     router,
     store

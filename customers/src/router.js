@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import vue from 'vue'
 import Router from 'vue-router'
 import list from './views/list.vue'
 // import detail from './views/detail.vue'
-Vue.use(Router)
+vue.use(Router)
 
 export default new Router({
   routes: [
