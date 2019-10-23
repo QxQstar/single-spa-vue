@@ -8,6 +8,7 @@ vue.use(Router)
   routes: [
     {
       path:'/account',
+      
       component:() => import(/* webpackChunkName: "login" */ './views/login.vue')
     },
     {
@@ -16,10 +17,17 @@ vue.use(Router)
       children:[
         {
           path: '',
+          meta:{
+            // 是否显示左侧菜单
+            sideNav:true
+          },
           component: Home
         },
         {
           path:'/about',
+          meta:{
+            hiddenSideNav:true
+          },
           component:() => import(/* webpackChunkName: "About" */ './views/About.vue')
         },
         {

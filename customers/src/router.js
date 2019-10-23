@@ -9,7 +9,15 @@ export default new Router({
     {
       path: '/customers',
       name: 'home',
-      component: list
+      redirect:'/customers/list'
+    },
+    {
+      path:'/customers/list',
+      component: list,
+    },
+    {
+      path:'/customers/new',
+      component: () => import(/* webpackChunkName: "customers-new" */ './views/newCustomer.vue')
     },
     {
       path: '/customers/detail',

@@ -9,7 +9,15 @@ export default new Router({
     {
       path: '/goods',
       name: 'home',
+      redirect:'/goods/list'
+    },
+    {
+      path:'/goods/list',
       component: list
+    },
+    {
+      path:'/goods/new',
+      component: () => import(/* webpackChunkName: "goods-new" */ './views/newGoods.vue')
     },
     {
       path: '/goods/detail',

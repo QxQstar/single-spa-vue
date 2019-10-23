@@ -1,0 +1,50 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,body,#app,.g-warp{
+  height: 100%;
+}
+.g-warp{
+  display: flex;
+  flex-direction: column;
+}
+// 头部导航
+.g-header{
+  height: 50px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  line-height: 50px;
+  background-color: #f47910;
+  color: #fff;
+  a {
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    &.router-link-exact-active {
+      text-decoration: underline;
+    }
+  }
+}
+
+.g-container{
+  flex: 1;
+  display: flex;
+  .g-side{
+    flex-basis: 200px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-right: 1px solid #ebebeb;
+    .el-menu{
+      border: none;
+    }
+  }
+  .g-content{
+    transition: 1s all;
+    flex: 1;
+    padding: 10px;
+  }
+}
+
+
