@@ -9,4 +9,11 @@ module.exports = {
         config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'},'axios',{'vuex':'Vuex'}])
     },
     filenameHashing: false,
+    css:{
+    loaderOptions:{
+        postcss:{
+            plugins:[require('postcss-plugin-namespace')('.goods-project',{ ignore: [ '*','#app' ] })]
+        }
+    }
+}
 }

@@ -8,4 +8,11 @@ module.exports = {
         config.externals(['vue', {'vue-router':'vueRouter'}])
     },
     filenameHashing: false,
+    css:{
+    loaderOptions:{
+        postcss:{
+            plugins:[require('postcss-plugin-namespace')('.customers-project',{ ignore: [ '*','#app' ] })]
+        }
+    }
+}
 }

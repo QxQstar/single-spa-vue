@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="main-project">
     <!--<div id="nav">-->
       <!--<router-link to="/about">关于</router-link> |-->
       <!--<router-link to="/goods">商品管理</router-link> |-->

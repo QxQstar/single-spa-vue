@@ -8,4 +8,11 @@ module.exports = {
     chainWebpack: config => {
         config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'}])
     },
+    css:{
+        loaderOptions:{
+            postcss:{
+                plugins:[require('postcss-plugin-namespace')('.main-project',{ ignore: [ '*','#app' ] })]
+            }
+        }
+    }
 }
