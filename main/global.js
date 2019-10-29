@@ -2,6 +2,7 @@
 window.SLH_APP = {
     IS_INTEGRATION:true,
     routes:[],
+    // 实现子应用之间的通信
     pub_event:{
         eventList:{},
         emitEvent(event_name,arge) {

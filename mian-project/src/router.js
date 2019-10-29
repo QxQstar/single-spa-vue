@@ -33,15 +33,12 @@ const routes = [
 ]
 }
 ]
-const SLH_APP = (window.SLH_APP || {});
-SLH_APP.routes = (SLH_APP.routes || []).concat(routes)
  const router = new Router({
   routes: routes
 })
 
 router.beforeEach((to,from ,next) => {
   if(!document.cookie && to.path !== '/account') {
-    console.log('fdfd')
     next('/account')
   } else {
     next();

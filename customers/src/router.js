@@ -15,7 +15,10 @@ const routes = [
   },
   {
     path:'/customers/new',
-    component: () => import(/* webpackChunkName: "customers-new" */ './views/newCustomer.vue')
+    component: () => import(/* webpackChunkName: "customers-new" */ './views/newCustomer.vue'),
+    meta:{
+      hiddenSideNav:true
+    },
 },
 {
   path: '/customers/detail',
@@ -27,9 +30,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "customers-detail" */ './views/detail.vue')
 }
 ]
-const SLH_APP = (window.SLH_APP || {});
-SLH_APP.routes = (SLH_APP.routes || []).concat(routes)
-
 export default new Router({
   routes: routes
 })

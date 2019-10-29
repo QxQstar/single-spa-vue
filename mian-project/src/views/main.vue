@@ -22,7 +22,7 @@
     export default {
         data() {
             return {
-
+                allRoutes:[]
             }
         },
         computed:{
@@ -37,7 +37,8 @@
                 return menuObj[module];
             }
         },
-        components:{topNav,sideNav}
+        components:{topNav,sideNav},
+
     }
 </script>
 <style lang="less">

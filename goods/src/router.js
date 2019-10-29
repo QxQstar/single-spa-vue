@@ -28,8 +28,7 @@ const routes = [
 }
 ]
 
-const SLH_APP = (window.SLH_APP || {});
-SLH_APP.routes = (SLH_APP.routes || []).concat(routes)
-export default new Router({
+const router = new Router({
   routes: routes
 })
+export default router
