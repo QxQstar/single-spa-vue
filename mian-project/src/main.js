@@ -5,6 +5,7 @@ import singleSpaVue from 'single-spa-vue';
 import elementUI from 'element-ui';
 import './set-public-path.js'
 import './style/main.less';
+import './http.js'
 vue.use(elementUI)
 vue.config.productionTip = false;
 

@@ -39,6 +39,7 @@ vue.use(Router)
 
 router.beforeEach((to,from ,next) => {
   if(!document.cookie && to.path !== '/account') {
+    console.log('fdfd')
     next('/account')
   } else {
     next();

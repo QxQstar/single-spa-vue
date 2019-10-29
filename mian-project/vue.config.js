@@ -11,7 +11,7 @@ module.exports = {
     css:{
         loaderOptions:{
             postcss:{
-                plugins:[require('postcss-plugin-namespace')('.main-project',{ ignore: [ '*','#app' ] })]
+                plugins:[require('postcss-plugin-namespace')('.main-project',{ ignore: [ '*','#app','.el-*' ] })]
             }
         }
     }
