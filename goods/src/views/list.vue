@@ -38,8 +38,9 @@ export default {
       }
     },
     created() {
+        let BASE_URL = process.env.VUE_APP_BASEURL;
         this.http({
-            url:'/vender/api/getInfo',
+            url:BASE_URL+'/vender/api/getInfo',
             method: 'post',
             params:{
                 venderId:10004
