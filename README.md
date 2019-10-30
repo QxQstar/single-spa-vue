@@ -4,7 +4,7 @@
 [](与技术无关)
 [](代码隔离)
 [](建立命名空间)
-[](在不能完全隔离的情况下，在个项目中使用命令空间避免css，事件，Cookies，Local Storage冲突)
+[](在不能完全隔离的情况下，在个项目中使用命令空间避免css，事件，Cookies，LocalStorage冲突)
 
 [](优先使用浏览器自身的特性，而不是自定义的api)
 [](使用浏览器自带的事件进行通信，而不是使用全局的发布订阅系统)
@@ -93,8 +93,54 @@ singleSpa.registerApplication('goods',() => System.import('goods'),activeFns.goo
 ```
 
 ### 启动single-spa
-
 ```js
     singleSpa.start();
 ```
+
+
+### 给各个应用注册生命周期函数
+single-spa-vue是一个在vue项目中注册single-spa生命周期的工具库。
+
+安装single-spa-vue
+```cli
+vue add single-spa
+
+// 或者
+
+npm install --save single-spa-vue
+```
+
+改写入口文件
+```js
+import vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store/base';
+import singleSpaVue from 'single-spa-vue';
+vue.use(elementUI)
+vue.config.productionTip = false;
+const vueLifecycles = singleSpaVue({
+  Vue:vue,
+  appOptions: {
+    el:'#main',
+    render: (h) => h(App),
+    router,
+    store
+  },
+});
+
+export const bootstrap = vueLifecycles.bootstrap;
+export const mount = vueLifecycles.mount;
+export const unmount = vueLifecycles.unmount;
+```
+
+## 项目结构图
+
+![基于single-spa的vue微前端项目结构](img/基于single-spa的vue微前端项目结构.png)
+
+### 前端入口项目
+前端入口项目不写业务代码，只是用于获取业务项目的配置(即：存在哪些业务项目，业务项目的入口)，注册各个业务项目以及加载各个业务项目的公共资源，入口项目有一个html文件，在业务项目处于激活状态时，将业务项目的DOM树挂载到入口项目的html中。
+
+### 业务项目
+业务项目的路由由自己定义，业务项目对外输出不需要入口HTML页面，只需要输出的资源文件即可，资源文件包括js、css、fonts和imgs等。在整个微前端项目中，业务项目是按需加载。
 
