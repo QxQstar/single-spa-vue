@@ -5,7 +5,8 @@ import singleSpaVue from 'single-spa-vue';
 import elementUI from 'element-ui';
 import './set-public-path.js'
 import './style/main.less';
-import './http.js'
+import hytools from 'hytools'
+vue.prototype.http = hytools.http;
 vue.use(elementUI)
 vue.config.productionTip = false;
 const SLH_APP = (window.SLH_APP || {});

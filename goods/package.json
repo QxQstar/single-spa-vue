@@ -11,6 +11,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "element-ui": "^2.12.0",
+    "hytools": "^1.1.0",
     "single-spa-vue": "^1.5.2",
     "systemjs-webpack-interop": "^1.1.0",
     "vue": "^2.6.10",
