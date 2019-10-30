@@ -133,6 +133,43 @@ export const bootstrap = vueLifecycles.bootstrap;
 export const mount = vueLifecycles.mount;
 export const unmount = vueLifecycles.unmount;
 ```
+### 抽离公共资源
+
+配置webpack的externals字段使webpack在打包的时候不打包公共库如(vue,vue-router,私有npm包等),如下：
+```js
+{
+    externals:['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'}]
+}
+```
+### 用systemJS定义import map
+import map 与webpack的externals配合使用能够让应用不打包公共库的代码，并且在应用运行的时候才加载公共库。
+```
+<script type="systemjs-importmap">
+      {
+        "imports": {
+           "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js",
+            "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js",
+          "vueRouter": "https://cdn.jsdelivr.net/npm/vue-router@3.0.7/dist/vue-router.min.js",
+          "elementUI":"https://unpkg.com/element-ui/lib/index.js",
+          "Vuex":"https://cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js",
+          "axios":"https://unpkg.com/axios/dist/axios.min.js"
+        }
+      }
+ </script>
+```
+
+这样代码在运行的时候遇到import、require时，会找到库在systemJs中对应的路径，来进行动态外部加载，加载完成之后将库暴露出的对象赋值给代码中的变量。
+
+### 各个应用间进行通信
+使用发布-订阅模式来实现各个应用间的通讯
+> 注意：各个应用之间应该尽可能少的进行通信，如果两个应用之间频繁的进行通信，那么它们两个应该合并成一个
+### 隔离css样式
+使用webpack，postcss在构建阶段为业务的所有CSS都加上自己的作用域
+```
+postcss:{
+    plugins:[require('postcss-plugin-namespace')('.main-project',{ ignore: [ '*'] })]
+}
+```
 
 ## 项目结构图
 
@@ -143,4 +180,5 @@ export const unmount = vueLifecycles.unmount;
 
 ### 业务项目
 业务项目的路由由自己定义，业务项目对外输出不需要入口HTML页面，只需要输出的资源文件即可，资源文件包括js、css、fonts和imgs等。在整个微前端项目中，业务项目是按需加载。
+
 
