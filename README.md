@@ -136,7 +136,7 @@ export const unmount = vueLifecycles.unmount;
 
 ## 项目结构图
 
-![基于single-spa的vue微前端项目结构](img/基于single-spa的vue微前端项目结构.png)
+![基于single-spa的vue微前端项目结构](./img/project-construction.png)
 
 ### 前端入口项目
 前端入口项目不写业务代码，只是用于获取业务项目的配置(即：存在哪些业务项目，业务项目的入口)，注册各个业务项目以及加载各个业务项目的公共资源，入口项目有一个html文件，在业务项目处于激活状态时，将业务项目的DOM树挂载到入口项目的html中。
