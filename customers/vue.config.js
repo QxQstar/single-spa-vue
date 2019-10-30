@@ -5,7 +5,7 @@ module.exports = {
     },
     publicPath:'',
     chainWebpack: config => {
-        config.externals(['vue', {'vue-router':'vueRouter'}])
+        config.externals(['vue', {'vue-router':'vueRouter'},'hytools'])
     },
     filenameHashing: false,
     css:{

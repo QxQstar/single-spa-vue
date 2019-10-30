@@ -5,11 +5,12 @@
     </div>
 </template>
 <script>
+    import hytools from 'hytools'
     export default {
         methods:{
             logout(){
                 const SLH_APP = (window.SLH_APP || {});
-                SLH_APP.pub_event.emitEvent('logout')
+                hytools.pub_event.emitEvent('logout')
             }
         }
     }

@@ -18,7 +18,7 @@ const vueLifecycles = singleSpaVue({
     router,
     beforeCreate() {
       // 注册事件
-      SLH_APP.pub_event.addEevent('logout',() => {
+      hytools.pub_event.addEevent('logout',() => {
         this.logout();
       })
     },
