@@ -28,6 +28,16 @@ single-spa设计了一个基本的生命周期，有五个状态：
 
 现在的前端项目的部署很大程度都是围绕这配置进行的，如果应用的配置能自动化，那么整个系统就自动化。如果我们要在微前端项目中添加或者删除一个应用，我们就更新微前端项目的配置，而这个配置应该自动生成。
 
+## 项目结构图
+
+![基于single-spa的vue微前端项目结构](./img/project-construction.png)
+
+### 前端入口项目
+前端入口项目不写业务代码，只是用于获取业务项目的配置(即：存在哪些业务项目，业务项目的入口)，注册各个业务项目以及加载各个业务项目的公共资源，入口项目有一个html文件，在业务项目处于激活状态时，将业务项目的DOM树挂载到入口项目的html中。
+
+### 业务项目
+业务项目的路由由自己定义，业务项目对外输出不需要入口HTML页面，只需要输出的资源文件即可，资源文件包括js、css、fonts和imgs等。在整个微前端项目中，业务项目是按需加载。
+
 ## 实现方案
 > 补充：我是使用systemJs加载静态资源
 ### 配置各个应用的入口
@@ -45,10 +55,11 @@ goods，customers和main-project是三个独立的项目,这个应该在各个�
 ### 注册应用
 ```js
 function isActive(location,page) {
-    const hash = location.hash.slice(2),
-        hashArr = hash.split('/');
-
-    return hashArr[0] === page;
+    let isShow = false;
+        if(location.hash.startsWith(`#${page}`)){
+            isShow = true
+        }
+        return isShow;
 }
 const activeFns = {
     goods(location) {
@@ -139,7 +150,14 @@ import map 与webpack的externals配合使用能够让应用不打包公共库�
 这样代码在运行的时候遇到import、require时，会找到库在systemJs中对应的路径，来进行动态外部加载，加载完成之后将库暴露出的对象赋值给代码中的变量。
 
 ### 各个应用间进行通信
-使用发布-订阅模式来实现各个应用间的通讯
+使用浏览器自定义事件来实现各个应用间的通讯
+```js
+// customers
+window.dispatchEvent(new CustomEvent('logout'));
+
+// main-project
+ window.addEventListener('logout',handler);
+```
 > 注意：各个应用之间应该尽可能少的进行通信，如果两个应用之间频繁的进行通信，那么它们两个应该合并成一个
 ### 隔离css样式
 使用webpack，postcss在构建阶段为业务的所有CSS都加上自己的作用域
@@ -148,15 +166,4 @@ postcss:{
     plugins:[require('postcss-plugin-namespace')('.main-project',{ ignore: [ '*'] })]
 }
 ```
-
-## 项目结构图
-
-![基于single-spa的vue微前端项目结构](./img/project-construction.png)
-
-### 前端入口项目
-前端入口项目不写业务代码，只是用于获取业务项目的配置(即：存在哪些业务项目，业务项目的入口)，注册各个业务项目以及加载各个业务项目的公共资源，入口项目有一个html文件，在业务项目处于激活状态时，将业务项目的DOM树挂载到入口项目的html中。
-
-### 业务项目
-业务项目的路由由自己定义，业务项目对外输出不需要入口HTML页面，只需要输出的资源文件即可，资源文件包括js、css、fonts和imgs等。在整个微前端项目中，业务项目是按需加载。
-
 
