@@ -15,6 +15,7 @@
     </div>
 </template>
 <script>
+    import hytools from 'hytools'
     export default {
         data(){
             return {
@@ -28,7 +29,7 @@
         methods:{
             submit(){
                 let BASE_URL = process.env.VUE_APP_BASEURL;
-                this.http({
+                hytools.http({
                     url:BASE_URL+'/account/user/checklogin',
                     method: 'post',
                     params:{
