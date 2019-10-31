@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <title>single-spa前端项目</title>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
     <script type="systemjs-importmap">
       {
         "imports": {
-          "goods": "http://localhost:9010/app.js",
-          "customers": "http://localhost:5100/app.js",
-          "main-project":"http://localhost:9100/app.js",
            "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js",
             "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js",
           "vueRouter": "https://cdn.jsdelivr.net/npm/vue-router@3.0.7/dist/vue-router.min.js",
@@ -20,16 +18,16 @@
         }
       }
     </script>
-    <!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
-    <!--<script src="https://cdn.jsdelivr.net/npm/hytools@1.1.2/dist/index.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/system.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/amd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/named-exports.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/named-register.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/use-default.min.js"></script>
+
 </head>
 <body>
     <div id="app"></div>
+    <script type="systemjs-importmap" src="importmap.json">
     <script type="text/javascript" src="global.js"></script>
     <script type="text/javascript" src="single-spa.config.js"></script>
 </body>

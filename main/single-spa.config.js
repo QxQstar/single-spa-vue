@@ -1,44 +1,45 @@
-// import activeFns from './activityFns.js';
 function isActive(location,page) {
-    const hash = location.hash.slice(2),
-        hashArr = hash.split('/');
-
-    return hashArr[0] === page;
+    let isShow = false;
+    if(location.hash.startsWith(`#${page}`)){
+        isShow = true
+    }
+    return isShow;
 }
-const activeFns = {
-    goods(location) {
-        return isActive(location,'goods')
-    },
-    customer() {
-        return isActive(location,'customers')
-    },
-    main() {
-        return true;
+function activeFns(app) {
+    return function (location) {
+        return isActive(location,app.path)
     }
 }
 
-function registerSub (singleSpa) {
-    // 确保主项目已经装载才注册子项目
-    if(document && document.getElementById('main')) {
-        // 商品管理
-        singleSpa.registerApplication('customers',() => System.import('customers'),activeFns.customer);
-        // 商品管理
-        singleSpa.registerApplication('goods',() => System.import('goods'),activeFns.goods);
-    } else {
-        setTimeout(function () {
-            registerSub(singleSpa);
-        },50)
-    }
-
+function bootstrap() {
+    // 注册应用
+    Promise.all([System.import('single-spa'),System.import('./dist/app.config.js')]).then(modules => {
+        const singleSpa = modules[0];
+        registerApp(singleSpa,modules[1]);
+        singleSpa.start();
+    })
 }
-// 注册应用
-Promise.all([System.import('single-spa'),System.import('vue')]).then(modules => {
-    const singleSpa = modules[0];
-    // 主项目要一直显示
-    singleSpa.registerApplication('main-project',() => System.import('main-project'),activeFns.main)
-    // 注册子项目
-    registerSub(singleSpa);
-    singleSpa.start();
-})
 
 
+
+// 注册项目
+function registerApp(singleSpa,projects) {
+    projects.forEach(function (project) {
+        function start(app) {
+            // 确保应用挂载点在页面中存在
+            if(!app.domID || document.getElementById(app.domID)) {
+                
+                singleSpa.registerApplication(project.name,() => System.import(project.main),project.base ? (function () { return true }) : activeFns(project),{name:'fdfd'})
+            } else {
+                setTimeout(function () {
+                    start(app);
+                },50)
+            }
+        }
+
+        start(project);
+    })
+}
+
+
+bootstrap()
