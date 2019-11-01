@@ -63,10 +63,10 @@ function isActive(location,page) {
 }
 const activeFns = {
     goods(location) {
-        return isActive(location,'goods')
+        return isActive(location,'/goods')
     },
     customer() {
-        return isActive(location,'customers')
+        return isActive(location,'/customers')
     },
     main() {
         return true;
@@ -106,6 +106,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store/base';
 import singleSpaVue from 'single-spa-vue';
+import elementUI from 'element-ui';
 vue.use(elementUI)
 vue.config.productionTip = false;
 const vueLifecycles = singleSpaVue({
@@ -139,9 +140,9 @@ import map 与webpack的externals配合使用能够让应用不打包公共库�
            "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js",
             "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js",
           "vueRouter": "https://cdn.jsdelivr.net/npm/vue-router@3.0.7/dist/vue-router.min.js",
-          "elementUI":"https://unpkg.com/element-ui/lib/index.js",
+          "elementUI":"https://cdn.jsdelivr.net/npm/element-ui@2.12.0/lib/index.js",
           "Vuex":"https://cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js",
-          "axios":"https://unpkg.com/axios/dist/axios.min.js"
+          "axios":"https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js",
         }
       }
  </script>

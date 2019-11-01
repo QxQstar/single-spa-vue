@@ -1,10 +1,14 @@
 module.exports = {
     lintOnSave:false,
     devServer:{
-        port:5100
+        port:5100,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+        },
     },
     publicPath:'',
     chainWebpack: config => {
+        // config.externals(['vue', {'vue-router':'vueRouter'}])
         config.externals(['vue', {'vue-router':'vueRouter'},'hytools'])
     },
     filenameHashing: false,

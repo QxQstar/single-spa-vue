@@ -1,7 +1,7 @@
 {
   "imports":{
-      "main-project": "http://localhost:9100/app.js",
-      "customers": "http://localhost:5100/app.js",
-      "goods": "http://localhost:9010/app.js"
+    "main-project": "http://localhost:9100/app.js",
+    "customers": "http://localhost:5100/app.js",
+    "goods": "http://localhost:9010/app.js"
   }
 }

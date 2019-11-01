@@ -2,10 +2,14 @@ module.exports = {
     lintOnSave:false,
     devServer:{
         port:9010,
-        proxy: 'http://saas1.market-mis.wmdev2.lsh123.com'
+        // proxy: 'http://saas1.market-mis.wmdev2.lsh123.com',
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+        },
     },
     publicPath:'',
     chainWebpack: config => {
+        // config.externals(['vue',{'vue-router':'vueRouter'},{'vuex':'Vuex'}])
         config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'},'axios',{'vuex':'Vuex'},'hytools'])
     },
     filenameHashing: false,
