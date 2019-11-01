@@ -19,5 +19,11 @@ export default [
         path:'/goods',
         domID:'main',
         main:'http://localhost:9010/app.js'
-    }
+    },
+    // {
+    //     name:"main-project",
+    //     base:true,
+    //     path:'/',
+    //     main:'http://localhost:8081/app.js'
+    // }
 ]

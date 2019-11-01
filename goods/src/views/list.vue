@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="goods-list">
   <div class="search">
       <el-input v-model="input" placeholder="请输入关键字" style="width: 300px" size="mini"></el-input>
   </div>
@@ -14,13 +14,14 @@
       <el-button @click="$store.commit('increment')">增加商品</el-button>
 
 
-      <hr/>
-        <ul>
-            <li v-for="item in resData">
+      <hr style="margin-top: 40px"/>
+      <div class="warehouse">所属仓库</div>
+        <div>
+            <div v-for="item in resData">
                 <span>ID: {{item.id}}</span> | <span>name: {{item.name}}</span>
 
-            </li>
-        </ul>
+            </div>
+        </div>
 
   </div>
   </div>
@@ -55,6 +56,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+    .goods-list{
+        text-align: left;
+    }
   .item{
     width: 200px;
     text-align: center;
@@ -63,4 +67,7 @@ export default {
       max-width: 100%;
     }
   }
+    .warehouse{
+        margin-top: 40px;
+    }
 </style>
