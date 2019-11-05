@@ -1,10 +1,10 @@
 // 为了让system能够引入这个文件，使用webpack打包成umd格式
 export default [
     {
-        name:'main-project',
+        name:"main-project",
         base:true,
         path:'/',
-        main:'http://localhost:9100/app.js'
+        main:'http://localhost:8080/app.js'
     },
     {
         name:'customers',
@@ -19,11 +19,5 @@ export default [
         path:'/goods',
         domID:'main',
         main:'http://localhost:9010/app.js'
-    },
-    // {
-    //     name:"main-project",
-    //     base:true,
-    //     path:'/',
-    //     main:'http://localhost:8081/app.js'
-    // }
+    }
 ]

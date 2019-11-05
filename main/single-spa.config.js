@@ -28,8 +28,8 @@ function registerApp(singleSpa,projects) {
         function start(app) {
             // 确保应用挂载点在页面中存在
             if(!app.domID || document.getElementById(app.domID)) {
-                
-                singleSpa.registerApplication(project.name,() => System.import(project.main),project.base ? (function () { return true }) : activeFns(project),{name:'fdfd'})
+
+                singleSpa.registerApplication(project.name,() => System.import(project.main),project.base ? (function () { return true }) : activeFns(project))
             } else {
                 setTimeout(function () {
                     start(app);
