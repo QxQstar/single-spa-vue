@@ -13,7 +13,7 @@ function activeFns(app) {
 
 function bootstrap() {
     // 注册应用
-    Promise.all([System.import('single-spa'),System.import('./dist/app.config.js')]).then(modules => {
+    Promise.all([System.import('single-spa'),System.import('./appConf/index.js')]).then(modules => {
         const singleSpa = modules[0];
         registerApp(singleSpa,modules[1]);
         singleSpa.start();
@@ -28,7 +28,7 @@ function registerApp(singleSpa,projects) {
         function start(app) {
             // 确保应用挂载点在页面中存在
             if(!app.domID || document.getElementById(app.domID)) {
-                
+
                 singleSpa.registerApplication(project.name,() => System.import(project.main),project.base ? (function () { return true }) : activeFns(project),{name:'fdfd'})
             } else {
                 setTimeout(function () {
