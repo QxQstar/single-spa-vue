@@ -11,6 +11,8 @@ module.exports = {
     chainWebpack: config => {
         // config.externals(['vue',{'vue-router':'vueRouter'},{'vuex':'Vuex'}])
         config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'},'axios',{'vuex':'Vuex'},'hytools'])
+        config.output
+            .jsonpFunction('webpackJsonp_goods')
     },
     filenameHashing: false,
     css:{

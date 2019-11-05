@@ -10,6 +10,8 @@ module.exports = {
     chainWebpack: config => {
         // config.externals(['vue', {'vue-router':'vueRouter'}])
         config.externals(['vue', {'vue-router':'vueRouter'},'hytools'])
+        config.output
+            .jsonpFunction('webpackJsonp_customers')
     },
     filenameHashing: false,
     css:{
