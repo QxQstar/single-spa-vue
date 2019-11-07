@@ -5,8 +5,8 @@ module.exports = {
     },
     mode:"development",
     output:{
-        path:path.resolve(__dirname,'./dist'),
-        filename:'app.config.js',
+        path:path.resolve(__dirname,'./appConf'),
+        filename:'index.js',
         libraryTarget: 'umd',
         libraryExport: 'default',
         library: '',
