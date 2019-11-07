@@ -7,11 +7,11 @@ export default [
         main:'http://localhost:8080/app.js'
     },
     {
-        name:'customers',
+        name:'mis-new',
         base:false,
-        path:'/customers',
+        path:'/saasfe/mis-new',
         domID:'main',
-        main:'http://localhost:5100/app.js'
+        main:'http://127.0.0.1:8081/mis-vue/app.js'
     },
     {
         name:'goods',

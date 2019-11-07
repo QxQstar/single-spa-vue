@@ -1,7 +1,7 @@
 {
   "imports":{
     "main-project": "http://localhost:8080/app.js",
-    "customers": "http://localhost:5100/app.js",
+    "mis-new": "http://127.0.0.1:8081/mis-vue/app.js",
     "goods": "http://localhost:9010/app.js"
   }
 }

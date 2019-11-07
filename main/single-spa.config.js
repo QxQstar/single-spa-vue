@@ -11,11 +11,11 @@ function activeFns(app) {
     }
 }
 
-function bootstrap() {
+function bootstrapApp() {
     // 注册应用
     Promise.all([System.import('single-spa'),System.import('./appConf/index.js')]).then(modules => {
         const singleSpa = modules[0];
-        registerApp(singleSpa,modules[1]);
+        registerApps(singleSpa,modules[1]);
         singleSpa.start();
     })
 }
@@ -98,18 +98,18 @@ function genSandbox(appName) {
         }
     }
 }
-function genAppLoadPromise(appPromise,Sandbox) {
+function genAppLoadPromise(appPromise) {
     return appPromise.then((app) => {
-                app.jsSandbox && app.jsSandbox(Sandbox.sandbox);
+                // app.jsSandbox && app.jsSandbox(Sandbox.sandbox);
                 return {
                     bootstrap:[app.bootstrap],
-                    mount:[app.mount,Sandbox.sandboxUnmount],
-                    unmount:[app.unmount,Sandbox.sandboxUnmount]
+                    mount:[app.mount],
+                    unmount:[app.unmount]
                 };
             })
 }
 // 注册项目
-function registerApp(singleSpa,projects) {
+function registerApps(singleSpa,projects) {
     projects.forEach(function (project) {
         function start(app) {
             // 确保应用挂载点在页面中存在
@@ -136,4 +136,4 @@ function registerApp(singleSpa,projects) {
 }
 
 
-bootstrap()
+bootstrapApp()

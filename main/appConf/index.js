@@ -104,7 +104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// 为了让system能够引入这个文件，使用webpack打包成umd格式\n/* harmony default export */ __webpack_exports__[\"default\"] = ([\n    {\n        name:'main-project',\n        base:true,\n        path:'/',\n        main:'http://localhost:9100/app.js'\n    },\n    {\n        name:'customers',\n        base:false,\n        path:'/customers',\n        domID:'main',\n        main:'http://localhost:5100/app.js'\n    },\n    {\n        name:'goods',\n        base:false,\n        path:'/goods',\n        domID:'main',\n        main:'http://localhost:9010/app.js'\n    }\n]);\n\n\n//# sourceURL=webpack:///./app.config.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n// 为了让system能够引入这个文件，使用webpack打包成umd格式\n/* harmony default export */ __webpack_exports__[\"default\"] = ([\n    {\n        name:\"main-project\",\n        base:true,\n        path:'/',\n        main:'http://localhost:8080/app.js'\n    },\n    {\n        name:'mis-new',\n        base:false,\n        path:'/saasfe/mis-new',\n        domID:'main',\n        main:'http://127.0.0.1:8081/mis-vue/app.js'\n    },\n    {\n        name:'goods',\n        base:false,\n        path:'/goods',\n        domID:'main',\n        main:'http://localhost:9010/app.js'\n    }\n]);\n\n\n//# sourceURL=webpack:///./app.config.js?");
 
 /***/ })
 
