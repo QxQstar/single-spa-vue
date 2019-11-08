@@ -1,7 +1,7 @@
 # 运行demo
 ```cli
-    npm run install:all
-    npm run start
+    sudo npm run install:all
+    sudo npm run start
 ```
 
 访问`http://localhost:5000/`
