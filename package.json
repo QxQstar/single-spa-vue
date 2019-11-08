@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install:all": "cd customers && npm i && cd ../goods && npm i && cd ../main && npm i && cd ../mian-project && npm i",
+    "install:all": "npm i && cd customers && npm i && cd ../goods && npm i && cd ../main && npm i && cd ../mian-project && npm i",
     "start": "concurrently \"npm run start:main\" \"npm run start:goods\" \"npm run start:customers\" \"npm run start:mian-project\"",
     "start:goods": "cd goods && npm run serve",
     "start:customers": "cd customers && npm run serve",
