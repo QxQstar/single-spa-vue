@@ -4,8 +4,11 @@ export default [
         name:'main-project',
         base:true,
         path:'/',
+        // 项目的入口
         projectIndex:'http://localhost:9100',
-        main:'http://localhost:9100/app.js'
+        // 项目的入口js文件的路径。
+        // 从项目入口html文件中用正则匹配到入口js文件的路径，将得到的路径保存到main字段中
+        main:''
     },
     {
         name:'customers',
@@ -13,7 +16,7 @@ export default [
         path:'/customers',
         domID:'main',
         projectIndex:'http://localhost:5100',
-        main:'http://localhost:5100/app.js'
+        main:''
     },
     {
         name:'goods',
@@ -21,6 +24,6 @@ export default [
         path:'/goods',
         domID:'main',
         projectIndex:'http://localhost:9010',
-        main:'http://localhost:9010/app.js'
+        main:''
     }
 ]

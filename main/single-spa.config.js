@@ -1,5 +1,5 @@
 import appConfig from './app.config.js';
-import startFetchHtml from './fetchProjectIndexJsName.js';
+import importHTML from './fetchProjectIndexJsName.js';
 function isActive(location,page) {
     let isShow = false;
     if(location.hash.startsWith(`#${page}`)){
@@ -42,6 +42,6 @@ function registerApp(singleSpa,projects) {
 }
 
 
-bootstrapApp();
-
-startFetchHtml(appConfig)
+importHTML(appConfig).then(() => {
+    bootstrapApp();
+})

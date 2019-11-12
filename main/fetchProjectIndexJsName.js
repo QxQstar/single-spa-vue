@@ -10,16 +10,16 @@ function getDomain(url) {
     }
 }
 // 获取各个项目入口js文件的名字
-export default function startFetch(projects) {
+export default function importHTML(projects) {
     const fetchPromises = [];
     projects.forEach(project => {
         const promise = window.fetch(project.projectIndex)
-            .then(response => response.text())
-            .then(html => {
-                const { entry } = processTpl(html,getDomain(project.projectIndex));
-                console.log(entry,'eee');
-                // project.main = entry;
-            });
+                            .then(response => response.text())
+                            .then(html => {
+                                const { entry } = processTpl(html,getDomain(project.projectIndex));
+                                project.main = entry;
+                                return project;
+                            });
         fetchPromises.push(promise);
     })
 

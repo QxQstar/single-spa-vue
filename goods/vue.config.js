@@ -15,13 +15,12 @@ module.exports = {
         config.plugin('script-ext-html')
             .use(ScriptExtHtmlWebpackPlugin,[{
                 custom: {
-                    test: /^app.*\.js$/,
+                    test: /app.*\.js$/,
                     attribute: 'entry',
                     value: true
                 }
             }])
     },
-    filenameHashing: false,
     css:{
     loaderOptions:{
         postcss:{
