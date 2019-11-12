@@ -4,6 +4,7 @@ export default [
         name:'main-project',
         base:true,
         path:'/',
+        projectIndex:'http://localhost:9100',
         main:'http://localhost:9100/app.js'
     },
     {
@@ -11,6 +12,7 @@ export default [
         base:false,
         path:'/customers',
         domID:'main',
+        projectIndex:'http://localhost:5100',
         main:'http://localhost:5100/app.js'
     },
     {
@@ -18,6 +20,7 @@ export default [
         base:false,
         path:'/goods',
         domID:'main',
+        projectIndex:'http://localhost:9010',
         main:'http://localhost:9010/app.js'
     }
 ]
