@@ -1,3 +1,4 @@
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 module.exports = {
     lintOnSave:false,
     devServer:{
@@ -10,6 +11,14 @@ module.exports = {
     chainWebpack: config => {
         // config.externals(['vue', {'vue-router':'vueRouter'}])
         config.externals(['vue', {'vue-router':'vueRouter'},'hytools'])
+        config.plugin('script-ext-html')
+            .use(ScriptExtHtmlWebpackPlugin,[{
+                custom: {
+                    test: /^app.*\.js$/,
+                    attribute: 'entry',
+                    value: true
+                }
+            }])
     },
     filenameHashing: false,
     css:{

@@ -17,8 +17,8 @@ export default function startFetch(projects) {
             .then(response => response.text())
             .then(html => {
                 const { entry } = processTpl(html,getDomain(project.projectIndex));
-
-                project.main = entry;
+                console.log(entry,'eee');
+                // project.main = entry;
             });
         fetchPromises.push(promise);
     })
