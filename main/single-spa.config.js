@@ -1,3 +1,4 @@
+import appConfig from './app.config.js';
 function isActive(location,page) {
     let isShow = false;
     if(location.hash.startsWith(`#${page}`)){
@@ -13,9 +14,9 @@ function activeFns(app) {
 
 function bootstrapApp() {
     // 注册应用
-    Promise.all([System.import('single-spa'),System.import('./appConf/index.js')]).then(modules => {
+    Promise.all([System.import('single-spa')]).then(modules => {
         const singleSpa = modules[0];
-        registerApp(singleSpa,modules[1]);
+        registerApp(singleSpa,appConfig);
         singleSpa.start();
     })
 }
