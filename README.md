@@ -1,3 +1,11 @@
+# 运行demo
+```cli
+    sudo npm run install:all
+    sudo npm run start
+```
+
+访问`http://localhost:5000/`
+
 # 基于single-spa的vue微前端项目
 
 微前端的概念是从后端的微服务的迁移过来的。将 Web 应用由单一的单体应用转变为多个小型前端应用聚合为一的应用。各个前端应用还可以独立运行、独立开发、独立部署。

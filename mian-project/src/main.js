@@ -18,9 +18,6 @@ const vueLifecycles = singleSpaVue({
     beforeCreate() {
       startListen(this)
     },
-    created(){
-      console.log(window.proxy.name);
-    },
     methods:{
       logout() {
         this.$router.push('/account');
@@ -40,7 +37,3 @@ const vueLifecycles = singleSpaVue({
 export const bootstrap = vueLifecycles.bootstrap;
 export const mount = vueLifecycles.mount
 export const unmount = vueLifecycles.unmount;
-
-export const jsSandbox = function (sandBox) {
-  window.proxy = sandBox
-}
