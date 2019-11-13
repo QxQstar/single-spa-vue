@@ -44,56 +44,124 @@ single-spa是一个可以将多个前端应用聚合到同一个页面展示的�
 前端入口项目不写业务代码，只是用于获取业务项目的配置(即：存在哪些业务项目，业务项目的入口)，注册各个业务项目以及加载各个业务项目的公共资源，入口项目有一个html文件，在业务项目处于激活状态时，将业务项目的DOM树挂载到入口项目的html中。
 
 ### 业务项目
-业务项目的路由由自己定义，业务项目对外输出不需要入口HTML页面，只需要输出的资源文件即可，资源文件包括js、css、fonts和imgs等。在整个微前端项目中，业务项目是按需加载。
+业务项目的路由由自己定义，在整个微前端项目中，业务项目是按需加载。
 
 ## 实现方案
 > 补充：我是使用systemJs加载静态资源
-### 配置各个应用的入口
-```json
-{
-        "imports": {
-          "goods": "http://localhost:9010/app.js",
-          "customers": "http://localhost:5100/app.js",
-          "main-project":"http://localhost:9100/app.js"
-        }
-      }
+### 各个项目的配置
 ```
-goods，customers和main-project是三个独立的项目,这个应该在各个项目部署的时候自动生成，
+[
+    {
+        name:'main-project',
+        base:true,
+        path:'/',
+        // 项目的访问入口
+        projectIndex:'http://localhost:9100',
+        // 项目的入口js文件的路径。
+        // 从项目入口html文件中用正则匹配到入口js文件的路径，将得到的路径保存到main字段中
+        main:'',
+        // 在html文件中的js脚本路径，这里的js脚本路径是过滤掉入口js之后的路径
+        scripts:[]
+    },
+    {
+        name:'customers',
+        base:false,
+        path:'/customers',
+        domID:'main',
+        projectIndex:'http://localhost:5100',
+        main:'',
+        scripts:[]
+    },
+    {
+        name:'goods',
+        base:false,
+        path:'/goods',
+        domID:'main',
+        projectIndex:'http://localhost:9010',
+        main:'',
+        scripts:[]
+    }
+]
+```
+
+goods，customers和main-project是三个独立的项目。通过webpack打包之后js，css等静态资源的文件名是不固定的，但是各个项目的html访问入口是固定，所以为了获得每个项目的入口js的路径，先获取各个项目的html文件的内容，然后从html内容中匹配到入口js文件路径和其他的脚本路径
+
+### 获取各个项目的入口js路径
+```js
+function importHTML(projects) {
+    const fetchPromises = [];
+    projects.forEach(project => {
+        const promise = window.fetch(project.projectIndex)
+                            .then(response => response.text())
+                            .then(html => {
+                                // 从html中匹配出所有的脚本
+                                const { entry,scripts } = processTpl(html,getDomain(project.projectIndex));
+                                // 项目入口js路径
+                                project.main = entry;
+                                scripts.forEach(script => {
+                                    if(script !== entry) {
+                                        // 除入口js之外的其他js脚本
+                                        project.scripts.push(script)
+                                    }
+                                });
+                                return project;
+                            });
+        fetchPromises.push(promise);
+    })
+
+    return Promise.all(fetchPromises)
+}
+```
+
+importHTML函数接受的参数是项目的配置数组
 
 ### 注册应用
 ```js
 function isActive(location,page) {
     let isShow = false;
-        if(location.hash.startsWith(`#${page}`)){
-            isShow = true
-        }
-        return isShow;
+    if(location.hash.startsWith(`#${page}`)){
+        isShow = true
+    }
+    return isShow;
 }
-const activeFns = {
-    goods(location) {
-        return isActive(location,'/goods')
-    },
-    customer() {
-        return isActive(location,'/customers')
-    },
-    main() {
-        return true;
+function activeFns(app) {
+    return function (location) {
+        return isActive(location,app.path)
     }
 }
+function registerApp(singleSpa,projects) {
+    projects.forEach(function (project) {
+        function start(app) {
+            // 确保应用挂载点在页面中存在
+            if(!app.domID || document.getElementById(app.domID)) {
+                singleSpa.registerApplication(app.name,
+                    () => {
+                        return System.import(app.main).then(resData => {
+                            return {
+                                bootstrap:[resData.bootstrap,insertScriptsBootstrap(app.scripts)],
+                                mount:resData.mount,
+                                unmount:resData.unmount
+                            }
+                        })
+                    },
+                    project.base ? (function () { return true }) : activeFns(project))
+            } else {
+                setTimeout(function () {
+                    start(app);
+                },50)
+            }
+        }
 
-singleSpa.registerApplication('main-project',() => System.import('main-project'),activeFns.main);
-
-singleSpa.registerApplication('customers',() => System.import('customers'),activeFns.customer);
-
-singleSpa.registerApplication('goods',() => System.import('goods'),activeFns.goods);
-
+        start(project);
+    })
+}
 ```
 
+在获取到各个项目的入口js路径之后才注册应用，`insertScriptsBootstrap`函数的作用是：将除入口js之外的其他js脚本插入到html文档中
 ### 启动single-spa
 ```js
     singleSpa.start();
 ```
-
 
 ### 给各个应用注册生命周期函数
 single-spa-vue是一个在vue项目中注册single-spa生命周期的工具库。
@@ -156,8 +224,19 @@ import map 与webpack的externals配合使用能够让应用不打包公共库�
  </script>
 ```
 
-这样代码在运行的时候遇到import、require时，会找到库在systemJs中对应的路径，来进行动态外部加载，加载完成之后将库暴露出的对象赋值给代码中的变量。
-
+这样代码在运行的时候遇到import、require时，会找到库在systemJs import map 中对应的路径，并进行动态外部加载，加载完成之后将库暴露出的对象赋值给代码中的变量。
+### 配置跨域访问
+```cli
+    devServer:{
+        port:9010,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+        },
+    },
+```
+由于子项目的资源需要在入口项目中访问，所以需要在子项目中配置跨域访问
+### 子项目的publicPath
+由于子项目的资源是在入口项目(入口项目和子项目在不同的域)中访问，所以需要将子项目的publicPath设置为完整的路径（即：包括协议和域名），这样才能保证子项目的资源能够正确加载。[output.publicPath](https://www.webpackjs.com/configuration/output/#output-publicpath)
 ### 各个应用间进行通信
 使用浏览器自定义事件来实现各个应用间的通讯
 ```js
