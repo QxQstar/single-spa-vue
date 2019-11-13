@@ -2,6 +2,7 @@
 export default [
     {
         name:'main-project',
+        // 需要一直在页面中显示
         base:true,
         path:'/',
         // 项目的入口
