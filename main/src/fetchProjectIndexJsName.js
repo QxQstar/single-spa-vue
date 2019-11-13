@@ -16,8 +16,14 @@ export default function importHTML(projects) {
         const promise = window.fetch(project.projectIndex)
                             .then(response => response.text())
                             .then(html => {
-                                const { entry } = processTpl(html,getDomain(project.projectIndex));
+                                const { entry,scripts } = processTpl(html,getDomain(project.projectIndex));
                                 project.main = entry;
+                                scripts.forEach(script => {
+                                    if(script !== entry) {
+                                        project.scripts.push(script)
+                                    }
+                                });
+                                console.log(project,'project')
                                 return project;
                             });
         fetchPromises.push(promise);
