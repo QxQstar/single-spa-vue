@@ -8,7 +8,9 @@ export default [
         projectIndex:'http://localhost:9100',
         // 项目的入口js文件的路径。
         // 从项目入口html文件中用正则匹配到入口js文件的路径，将得到的路径保存到main字段中
-        main:''
+        main:'',
+        // 在html文件中的js脚本路径，这里的js脚本路径是过滤掉入口js之后的路径
+        scripts:[]
     },
     {
         name:'customers',
@@ -16,7 +18,8 @@ export default [
         path:'/customers',
         domID:'main',
         projectIndex:'http://localhost:5100',
-        main:''
+        main:'',
+        scripts:[]
     },
     {
         name:'goods',
@@ -24,6 +27,7 @@ export default [
         path:'/goods',
         domID:'main',
         projectIndex:'http://localhost:9010',
-        main:''
+        main:'',
+        scripts:[]
     }
 ]
