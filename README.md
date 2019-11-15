@@ -50,18 +50,22 @@ single-spa是一个可以将多个前端应用聚合到同一个页面展示的�
 > 补充：我是使用systemJs加载静态资源
 ### 各个项目的配置
 ```
-[
-    {
+{
         name:'main-project',
+        // 需要一直在页面中显示
         base:true,
         path:'/',
-        // 项目的访问入口
+        // 项目的入口
         projectIndex:'http://localhost:9100',
         // 项目的入口js文件的路径。
         // 从项目入口html文件中用正则匹配到入口js文件的路径，将得到的路径保存到main字段中
         main:'',
         // 在html文件中的js脚本路径，这里的js脚本路径是过滤掉入口js之后的路径
-        scripts:[]
+        scripts:[],
+        // 在html文件中用link引入的外部样式
+        outerStyles:[],
+        // html文件中style标签内嵌样式
+        innerStyles:[]
     },
     {
         name:'customers',
@@ -70,7 +74,9 @@ single-spa是一个可以将多个前端应用聚合到同一个页面展示的�
         domID:'main',
         projectIndex:'http://localhost:5100',
         main:'',
-        scripts:[]
+        scripts:[],
+        outerStyles:[],
+        innerStyles:[]
     },
     {
         name:'goods',
@@ -79,9 +85,10 @@ single-spa是一个可以将多个前端应用聚合到同一个页面展示的�
         domID:'main',
         projectIndex:'http://localhost:9010',
         main:'',
-        scripts:[]
+        scripts:[],
+        outerStyles:[],
+        innerStyles:[]
     }
-]
 ```
 
 goods，customers和main-project是三个独立的项目。通过webpack打包之后js，css等静态资源的文件名是不固定的，但是各个项目的html访问入口是固定，所以为了获得每个项目的入口js的路径，先获取各个项目的html文件的内容，然后从html内容中匹配到入口js文件路径和其他的脚本路径

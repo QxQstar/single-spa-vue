@@ -1,4 +1,3 @@
-// 为了让system能够引入这个文件，使用webpack打包成umd格式
 export default [
     {
         name:'main-project',
