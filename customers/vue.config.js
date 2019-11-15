@@ -18,7 +18,10 @@ module.exports = {
                     attribute: 'entry',
                     value: true
                 }
-            }])
+            }]);
+        config.output
+            .libraryTarget('umd')
+            .library('customers')
     },
     css:{
     loaderOptions:{

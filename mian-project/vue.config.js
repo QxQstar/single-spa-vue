@@ -12,10 +12,8 @@ module.exports = {
     chainWebpack: config => {
         // config.externals(['vue',{'vue-router':'vueRouter'}])
         config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'},'axios','hytools'])
-<<<<<<< HEAD
         config.output
                     .jsonpFunction('webpackJsonp_customers')
-=======
         config.plugin('script-ext-html')
             .use(ScriptExtHtmlWebpackPlugin,[{
                 custom: {
@@ -24,7 +22,9 @@ module.exports = {
                     value: true
                 }
             }])
->>>>>>> master
+        config.output
+            .libraryTarget('umd')
+            .library('main-project')
     },
     css:{
         loaderOptions:{

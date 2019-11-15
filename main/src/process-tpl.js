@@ -47,7 +47,8 @@ export const genIgnoreAssetReplaceSymbol = url => `<!-- ignore asset ${url || 'f
 export default function processTpl(tpl, domain) {
 
 	let scripts = [];
-	const styles = [];
+	const outerStyles = [];
+	const innerStyles = [];
 	let entry = null;
 
 	const template = tpl
@@ -80,7 +81,7 @@ export default function processTpl(tpl, domain) {
 						return genIgnoreAssetReplaceSymbol(newHref);
 					}
 
-					styles.push(newHref);
+					outerStyles.push(newHref);
 					return genLinkReplaceSymbol(newHref);
 				}
 			}
@@ -90,6 +91,8 @@ export default function processTpl(tpl, domain) {
 		.replace(STYLE_TAG_REGEX, match => {
 			if (STYLE_IGNORE_REGEX.test(match)) {
 				return genIgnoreAssetReplaceSymbol('style file');
+			} else {
+				innerStyles.push(match);
 			}
 			return match;
 		})
@@ -155,7 +158,8 @@ export default function processTpl(tpl, domain) {
 	return {
 		template,
 		scripts,
-		styles,
+		innerStyles,
+		outerStyles,
 		// set the last script as entry if have not set
 		entry: entry || scripts[scripts.length - 1],
 	};

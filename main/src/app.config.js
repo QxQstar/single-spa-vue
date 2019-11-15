@@ -11,7 +11,11 @@ export default [
         // 从项目入口html文件中用正则匹配到入口js文件的路径，将得到的路径保存到main字段中
         main:'',
         // 在html文件中的js脚本路径，这里的js脚本路径是过滤掉入口js之后的路径
-        scripts:[]
+        scripts:[],
+        // 在html文件中用link引入的外部样式
+        outerStyles:[],
+        // html文件中style标签内嵌样式
+        innerStyles:[]
     },
     {
         name:'mis-new',
@@ -20,6 +24,8 @@ export default [
         domID:'main',
         projectIndex:'http://127.0.0.1:8081',
         main:'',
-        scripts:[]
+        scripts:[],
+        outerStyles:[],
+        innerStyles:[]
     }
 ]

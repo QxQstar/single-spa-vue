@@ -16,8 +16,10 @@ export default function importHTML(projects) {
         const promise = window.fetch(project.projectIndex)
                             .then(response => response.text())
                             .then(html => {
-                                const { entry,scripts } = processTpl(html,getDomain(project.projectIndex));
+                                const { entry,scripts,innerStyles,outerStyles } = processTpl(html,getDomain(project.projectIndex));
                                 project.main = entry;
+                                project.innerStyles.push(...innerStyles);
+                                project.outerStyles.push(...outerStyles);
                                 scripts.forEach(script => {
                                     if(script !== entry) {
                                         project.scripts.push(script)

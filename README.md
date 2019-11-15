@@ -199,6 +199,9 @@ export const bootstrap = vueLifecycles.bootstrap;
 export const mount = vueLifecycles.mount;
 export const unmount = vueLifecycles.unmount;
 ```
+
+### 各个应用统一路由前缀
+以goods项目为例，在定义路由的时候所有路由都以`/goods`开头
 ### 抽离公共资源
 
 配置webpack的externals字段使webpack在打包的时候不打包公共库如(vue,vue-router,私有npm包等),如下：
@@ -225,6 +228,15 @@ import map 与webpack的externals配合使用能够让应用不打包公共库�
 ```
 
 这样代码在运行的时候遇到import、require时，会找到库在systemJs import map 中对应的路径，并进行动态外部加载，加载完成之后将库暴露出的对象赋值给代码中的变量。
+
+*** 由于使用systemJs 加载资源，所有要将项目打包成umd格式的
+```
+output: {
+    ...
+    libraryTarget: 'umd',
+    library: xxx,
+}
+```
 ### 配置跨域访问
 ```cli
     devServer:{
