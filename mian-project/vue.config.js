@@ -19,7 +19,10 @@ module.exports = {
                     attribute: 'entry',
                     value: true
                 }
-            }])
+            }]);
+        config.output
+            .libraryTarget('umd')
+            .library('main-project')
     },
     css:{
         loaderOptions:{
