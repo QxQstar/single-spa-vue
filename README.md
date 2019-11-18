@@ -93,7 +93,7 @@ single-spa是一个可以将多个前端应用聚合到同一个页面展示的�
 
 goods，customers和main-project是三个独立的项目。通过webpack打包之后js，css等静态资源的文件名是不固定的，但是各个项目的html访问入口是固定，所以为了获得每个项目的入口js的路径，先获取各个项目的html文件的内容，然后从html内容中匹配到入口js文件路径和其他的脚本路径
 
-### 获取各个项目的入口js路径
+### 获取子项目html中插入的js路径
 ```js
 function importHTML(projects) {
     const fetchPromises = [];
@@ -119,6 +119,7 @@ function importHTML(projects) {
     return Promise.all(fetchPromises)
 }
 ```
+以项目中js资源为例，js资源分为两种，一种是一边运行一边加载的js脚本，另一种资源是通过打包工具（例如webpack）打包之后直接插入到html文件中的js资源（如：入口js），这部分js资源是保证项目正常运行的基础，在生产环境中为了资源加载的性能，不会只打包出一个包，所以在html文件中我们除了找到入口js的路径还需要找到其他的js路径，并且需要将其他的js脚本在bootstrap生命周期中插入到主项目的html中
 
 importHTML函数接受的参数是项目的配置数组
 
