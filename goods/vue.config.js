@@ -8,7 +8,8 @@ module.exports = {
             "Access-Control-Allow-Origin": "*",
         },
     },
-    publicPath:'',
+    publicPath:process.env.VUE_publicPath,
+    outputDir:'goods',
     chainWebpack: config => {
         // config.externals(['vue',{'vue-router':'vueRouter'},{'vuex':'Vuex'}])
         config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'},'axios',{'vuex':'Vuex'},'hytools'])

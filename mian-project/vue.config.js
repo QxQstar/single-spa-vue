@@ -1,6 +1,7 @@
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 module.exports = {
     lintOnSave:false,
+    outputDir:'mainproject',
     devServer:{
         port:9100,
         // proxy: 'http://saas1.market-mis.wmdev2.lsh123.com'
@@ -8,7 +9,7 @@ module.exports = {
             "Access-Control-Allow-Origin": "*",
         },
     },
-    publicPath:'',
+    publicPath:process.env.VUE_publicPath,
     chainWebpack: config => {
         // config.externals(['vue',{'vue-router':'vueRouter'}])
         config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'},'axios','hytools'])
@@ -22,7 +23,7 @@ module.exports = {
             }]);
         config.output
             .libraryTarget('umd')
-            .library('main-project')
+            // .library('main-project')
     },
     css:{
         loaderOptions:{

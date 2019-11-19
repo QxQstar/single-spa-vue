@@ -1,3 +1,4 @@
+console.log(process.env.mode,'process.env')
 export default [
     {
         name:'main-project',
@@ -5,7 +6,7 @@ export default [
         base:true,
         path:'/',
         // 项目的入口
-        projectIndex:'http://localhost:9100',
+        projectIndex:process.env.mode === 'prod' ? 'http://mainproject.heyudesign.cn' : 'http://localhost:9100',
         // 项目的入口js文件的路径。
         // 从项目入口html文件中用正则匹配到入口js文件的路径，将得到的路径保存到main字段中
         main:'',
@@ -21,7 +22,7 @@ export default [
         base:false,
         path:'/customers',
         domID:'main',
-        projectIndex:'http://localhost:5100',
+        projectIndex:process.env.mode === 'prod'?'http://customers.heyudesign.cn':'http://localhost:5100',
         main:'',
         scripts:[],
         outerStyles:[],
@@ -32,7 +33,7 @@ export default [
         base:false,
         path:'/goods',
         domID:'main',
-        projectIndex:'http://localhost:9010',
+        projectIndex:process.env.mode === 'prod'? 'http://goods.heyudesign.cn' : 'http://localhost:9010',
         main:'',
         scripts:[],
         outerStyles:[],

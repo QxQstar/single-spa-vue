@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './router';
 import singleSpaVue from 'single-spa-vue';
 import elementUI from 'element-ui';
-import './set-public-path.js'
 import './style/main.less';
 import {startListen} from './eventListener.js';
 vue.use(elementUI)

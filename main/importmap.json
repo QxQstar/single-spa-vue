@@ -1,7 +1,0 @@
-{
-  "imports":{
-    "main-project": "http://localhost:9100/",
-    "customers": "http://localhost:5100/",
-    "goods": "http://localhost:9010/"
-  }
-}
