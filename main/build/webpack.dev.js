@@ -6,7 +6,7 @@ module.exports =  {
         app:'./src/single-spa.config.js'
     },
     devServer: {
-        port: 5020,
+        port: 5000,
         headers: {
             'Access-Control-Allow-Origin': '*'
         },
