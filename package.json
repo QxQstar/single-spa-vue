@@ -10,7 +10,12 @@
     "start:goods": "cd goods && npm run serve",
     "start:customers": "cd customers && npm run serve",
     "start:main": "cd main && npm run serve",
-    "start:mian-project": "cd mian-project && npm run serve"
+    "start:mian-project": "cd mian-project && npm run serve",
+    "build": "concurrently \"npm run build:main\" \"npm run build:goods\" \"npm run build:customers\" \"npm run build:mian-project\"",
+    "build:main":"cd main && npm run build",
+    "build:goods": "cd goods && npm run build",
+    "build:customers": "cd customers && npm run build",
+    "build:mian-project": "cd mian-project && npm run build"
   },
   "repository": {
     "type": "git",

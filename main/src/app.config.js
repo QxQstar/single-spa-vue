@@ -5,7 +5,7 @@ export default [
         base:true,
         path:'/',
         // 项目的入口
-        projectIndex:'http://localhost:8082',
+        projectIndex:'http://localhost:9050',
         // 项目的入口js文件的路径。
         // 从项目入口html文件中用正则匹配到入口js文件的路径，将得到的路径保存到main字段中
         main:'',
@@ -21,7 +21,7 @@ export default [
         base:false,
         path:'/saasfe/mis-new',
         domID:'main',
-        projectIndex:'http://127.0.0.1:8081',
+        projectIndex:'http://127.0.0.1:9060',
         main:'',
         scripts:[],
         outerStyles:[],

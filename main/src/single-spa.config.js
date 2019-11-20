@@ -1,6 +1,6 @@
 import appConfig from './app.config.js';
 import {loadSourceBootstrap} from './insertSource.js'
-import importHTML from './fetchProjectIndexJsName.js';
+import analyzeHTML from './fetchProjectIndexJsName.js';
 function isActive(location,page) {
     let isShow = false;
     if(location.hash.startsWith(`#${page}`)){
@@ -34,6 +34,7 @@ function registerApp(singleSpa,projects) {
             // 确保应用挂载点在页面中存在
             if(!app.domID || document.getElementById(app.domID)) {
                 singleSpa.registerApplication(app.name,
+                    // () => import(app.main),
                     () => {
                         return System.import(app.main).then(resData => {
                             return {
@@ -58,6 +59,6 @@ function registerApp(singleSpa,projects) {
 }
 
 
-importHTML(appConfig).then(() => {
+analyzeHTML(appConfig).then(() => {
     bootstrapApp();
 })

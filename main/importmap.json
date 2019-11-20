@@ -1,6 +1,0 @@
-{
-  "imports":{
-    "main-project": "http://localhost:8082",
-    "mis-new": "http://127.0.0.1:8081"
-  }
-}

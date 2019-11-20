@@ -1,4 +1,3 @@
-import './set-public-path';
 import vue from 'vue';
 import App from './App.vue';
 import router from './router';

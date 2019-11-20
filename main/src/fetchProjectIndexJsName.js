@@ -10,7 +10,7 @@ function getDomain(url) {
     }
 }
 // 获取各个项目入口js文件的名字
-export default function importHTML(projects) {
+export default function analyzeHTML(projects) {
     const fetchPromises = [];
     projects.forEach(project => {
         const promise = window.fetch(project.projectIndex)
