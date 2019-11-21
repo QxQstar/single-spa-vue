@@ -5,6 +5,10 @@ import list from './views/list.vue'
 vue.use(Router)
 const routes = [
   {
+    path:'/',
+    redirect: '/customers'
+  },
+  {
     path: '/customers',
     name: 'home',
     redirect:'/customers/list'

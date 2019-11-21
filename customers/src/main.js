@@ -4,14 +4,17 @@ import router from './router';
 import singleSpaVue from 'single-spa-vue';
 
 vue.config.productionTip = false;
-
+const appOptions = {
+  el:'#main',
+  render: (h) => h(App),
+  router,
+}
+if(process.env.VUE_APP_SINGLERUN ==='true') {
+  new vue(appOptions)
+}
 const vueLifecycles = singleSpaVue({
   Vue:vue,
-  appOptions: {
-    el:'#main',
-    render: (h) => h(App),
-    router,
-  },
+  appOptions: appOptions,
 });
 
 export const bootstrap = vueLifecycles.bootstrap;

@@ -7,11 +7,13 @@ module.exports = {
             "Access-Control-Allow-Origin": "*",
         },
     },
-    publicPath:process.env.VUE_publicPath,
+    publicPath:process.env.VUE_APP_publicPath,
     outputDir:'customers',
     chainWebpack: config => {
-        // config.externals(['vue', {'vue-router':'vueRouter'}])
-        config.externals(['vue', {'vue-router':'vueRouter'},'hytools'])
+        if(process.env.VUE_APP_SINGLERUN !== 'true'){
+            config.externals(['vue', {'vue-router':'vueRouter'},'hytools'])
+        }
+
         config.plugin('script-ext-html')
             .use(ScriptExtHtmlWebpackPlugin,[{
                 custom: {

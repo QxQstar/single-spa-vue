@@ -6,6 +6,10 @@ import goods from './views/goods.vue';
 vue.use(Router)
 const routes = [
   {
+    path:'/',
+    redirect:'/goods'
+  },
+  {
     path: '/goods',
     name: 'home',
     redirect:'/goods/list',
