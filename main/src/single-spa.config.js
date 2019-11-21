@@ -14,17 +14,13 @@ function activeFns(app) {
     }
 }
 
-function bootstrapApp() {
+function bootstrapApp(appConfig) {
     // 注册应用
     Promise.all([System.import('single-spa')]).then(modules => {
         const singleSpa = modules[0];
         registerApp(singleSpa,appConfig);
         singleSpa.start();
     })
-}
-// 外部链接
-function insertStyles(path) {
-
 }
 // 注册项目
 function registerApp(singleSpa,projects) {
@@ -34,7 +30,6 @@ function registerApp(singleSpa,projects) {
             // 确保应用挂载点在页面中存在
             if(!app.domID || document.getElementById(app.domID)) {
                 singleSpa.registerApplication(app.name,
-                    // () => import(app.main),
                     () => {
                         return System.import(app.main).then(resData => {
                             app.name === 'goods' && console.log(resData,'rere');
@@ -60,6 +55,11 @@ function registerApp(singleSpa,projects) {
 }
 
 
-analyzeHTML(appConfig).then(() => {
-    bootstrapApp();
-})
+analyzeHTML(appConfig)
+    .then((projects) => {
+        bootstrapApp(projects);
+    })
+    .catch(() => {
+        console.error('all fail')
+    });
+
