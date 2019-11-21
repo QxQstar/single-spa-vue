@@ -1,4 +1,3 @@
-console.log(process.env.mode,'process.env')
 export default [
     {
         name:'main-project',

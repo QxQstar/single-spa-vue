@@ -4,15 +4,16 @@ module.exports = {
     outputDir:'mainproject',
     devServer:{
         port:9100,
-        // proxy: 'http://saas1.market-mis.wmdev2.lsh123.com'
         headers: {
             "Access-Control-Allow-Origin": "*",
         },
     },
-    publicPath:process.env.VUE_publicPath,
+    publicPath:process.env.VUE_APP_publicPath,
     chainWebpack: config => {
-        // config.externals(['vue',{'vue-router':'vueRouter'}])
-        config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'},'axios','hytools'])
+        if(process.env.VUE_APP_SINGLERUN !== 'true') {
+            config.externals(['vue',{'vue-router':'vueRouter'},{'element-ui':'elementUI'},'axios','hytools'])
+        }
+
         config.plugin('script-ext-html')
             .use(ScriptExtHtmlWebpackPlugin,[{
                 custom: {

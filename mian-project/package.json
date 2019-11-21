@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve:singlerun": "vue-cli-service serve --mode developmentsinglerun",
     "build": "vue-cli-service build",
+    "build:singlerun": "vue-cli-service build --mode productionsinglerun",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },

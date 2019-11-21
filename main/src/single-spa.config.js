@@ -37,6 +37,7 @@ function registerApp(singleSpa,projects) {
                     // () => import(app.main),
                     () => {
                         return System.import(app.main).then(resData => {
+                            app.name === 'goods' && console.log(resData,'rere');
                             return {
                                 bootstrap:[ resData.bootstrap,
                                             loadSourceBootstrap(app.scripts,'script'),
@@ -60,5 +61,6 @@ function registerApp(singleSpa,projects) {
 
 
 analyzeHTML(appConfig).then(() => {
+    window.IS_IN_ALL = true;
     bootstrapApp();
 })
