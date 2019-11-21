@@ -5,8 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "serve:singlerun": "vue-cli-service serve --mode developmentsinglerun",
-    "build:singlerun": "vue-cli-service build --mode productionsinglerun",
+    "serve:singlerun": "cross-env VUE_APP_SINGLERUN=true vue-cli-service serve",
+    "build:singlerun": "cross-env VUE_APP_SINGLERUN=true vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -27,6 +27,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "cross-env": "^6.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "less": "^3.0.4",

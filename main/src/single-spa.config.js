@@ -61,6 +61,5 @@ function registerApp(singleSpa,projects) {
 
 
 analyzeHTML(appConfig).then(() => {
-    window.IS_IN_ALL = true;
     bootstrapApp();
 })
