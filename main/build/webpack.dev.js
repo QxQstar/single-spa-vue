@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
 module.exports =  {
     entry:{
-        app:'./src/single-spa.config.js'
+        app:'./src/index.js'
     },
     devServer: {
         port: 5000,

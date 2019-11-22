@@ -1,4 +1,4 @@
-import processTpl from './process-tpl.js';
+import processTpl from './processTpl.js';
 function fetch(path) {
     return window.fetch(path)
 }
@@ -11,7 +11,6 @@ function getDomain(url) {
         return '';
     }
 }
-// 获取各个项目入口js文件的名字
 export default function analyzeHTML(projects) {
     return new Promise(function (resolve, reject) {
         const successProjects = [];
@@ -20,7 +19,9 @@ export default function analyzeHTML(projects) {
             fetch(project.projectIndex)
                 .then(response => response.text())
                 .then(html => {
+                    // 从html文件中匹配出这个项目的css，js路径
                     const { entry,scripts,innerStyles,outerStyles } = processTpl(html,getDomain(project.projectIndex));
+                    // 入口js路径
                     project.main = entry;
                     project.innerStyles.push(...innerStyles);
                     project.outerStyles.push(...outerStyles);
