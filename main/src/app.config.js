@@ -20,7 +20,7 @@ export default [
     {
         name:'customers',
         base:false,
-        path:'#/customers',
+        path:['#/customers'],
         domID:'main',
         projectIndex:process.env.mode === 'prod'?'http://customers.heyudesign.cn':'http://localhost:5100',
         main:'',
