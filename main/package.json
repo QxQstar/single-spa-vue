@@ -2,9 +2,11 @@
   "name": "main",
   "version": "1.0.0",
   "description": "",
-  "main": "activityFns.js",
+  "main": "./src/index.js",
   "dependencies": {
-    "single-spa": "^4.4.1"
+    "@hydesign/grape": "^0.0.4",
+    "single-spa": "^4.4.1",
+    "systemjs": "^6.1.4"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
@@ -15,6 +17,7 @@
     "webpack-dev-server": "^3.9.0"
   },
   "scripts": {
+    "dev": "serve -s -l 5000",
     "serve": "webpack-dev-server --config ./build/webpack.dev.js",
     "build": "webpack --config ./build/webpack.pro.js",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -24,7 +24,7 @@ module.exports = {
             }]);
         config.output
             .libraryTarget('umd')
-            // .library('main-project')
+            .library('main-project')
     },
     css:{
         loaderOptions:{
