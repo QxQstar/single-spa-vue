@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 module.exports =  {
     entry:{
-        app:'./src/single-spa.config.js'
+        app:'./src/index.js'
     },
     mode:'development',
     output:{

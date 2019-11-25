@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack')
 module.exports =  {
     entry:{
-        app:'./src/single-spa.config.js'
+        app:'./src/index.js'
     },
     devServer: {
         port: 5000,
@@ -12,11 +12,11 @@ module.exports =  {
         },
         disableHostCheck: true
     },
-    module: {
-        rules: [
-            { parser: { system: false } }
-        ]
-    },
+    // module: {
+    //     rules: [
+    //         { parser: { system: false } }
+    //     ]
+    // },
     plugins:[
         new HtmlWebpackPlugin({
             title:'single-spa 微前端项目',
