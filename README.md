@@ -120,7 +120,7 @@ output: {
 
 ### @hydesign/grape
 
-使用`@hydesign/grape`完成子项目的注册，异步加载和生命周期管理，并且子项目的框架无关，版本无关。`@hydesign/grape`与`webpack`的 externals 配合使用，能够抽离出项目中不想打包的库，并且在项目运行当使用到这个库的时候在动态加载。
+使用[@hydesign/grape](https://github.com/QxQstar/grape)完成子项目的注册，异步加载和生命周期管理，并且子项目的框架无关，版本无关。[@hydesign/grape](https://github.com/QxQstar/grape)与`webpack`的 externals 配合使用，能够抽离出项目中不想打包的库，并且在项目运行当使用到这个库的时候在动态加载。
 
 ```js
  import Grape from '@hydesign/grape';
@@ -139,7 +139,7 @@ output: {
 
 ## 给子项目的入口js加标识
 
-经过`webpack`打包之后一个项目在 index.html 中插入的 js 脚本可能不只一个，所以在为了确保`@hydesign/grape`能够正确的从项目访问入口中解析要入口js，给入口 js 文件加上一个自定义属性
+经过`webpack`打包之后一个项目在 index.html 中插入的 js 脚本可能不只一个，所以在为了确保[@hydesign/grape](https://github.com/QxQstar/grape)能够正确的从项目访问入口中解析要入口js，给入口 js 文件加上一个自定义属性
 
 ``` 
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
@@ -203,6 +203,7 @@ postcss:{
 ## 参考文章
 
 * [single-spa](https://single-spa.js.org/)
+* [@hydesign/grape](https://github.com/QxQstar/grape)
 * [微前端那些事儿](https://github.com/phodal/microfrontends)
 * [每日优鲜供应链前端团队微前端改造](https://juejin.im/post/5d7f702ce51d4561f777e258)
 * [微前端项目](https://segmentfault.com/a/1190000019957162)
