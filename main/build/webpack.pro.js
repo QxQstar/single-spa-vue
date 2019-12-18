@@ -6,7 +6,7 @@ module.exports =  {
     entry:{
         app:'./src/index.js'
     },
-    mode:'development',
+    mode:'production',
     output:{
         path: path.resolve(__dirname, '../dist'),
         filename:'[name].[hash].js',
@@ -23,7 +23,7 @@ module.exports =  {
             template:'./index.html'
         }),
         new webpack.DefinePlugin({
-            'process.env':{mode:'"pro"'}
+            'process.env':{mode:'"prod"'}
         }),
         new CleanWebpackPlugin()
     ]
