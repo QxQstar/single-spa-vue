@@ -8,7 +8,6 @@ module.exports = {
         },
     },
     publicPath:process.env.VUE_APP_publicPath,
-    outputDir:'goods',
     chainWebpack: config => {
         // 不是独立运行的时候，将公共npm包抽离
         if(process.env.VUE_APP_SINGLERUN !== 'true') {
@@ -24,7 +23,8 @@ module.exports = {
             }]);
         config.output
             .libraryTarget('umd')
-            .library('goods')
+            .library('')
+            .jsonpFunction('webpackJsonp_goods')
     },
     css:{
     loaderOptions:{

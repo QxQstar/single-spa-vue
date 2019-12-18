@@ -1,7 +1,6 @@
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 module.exports = {
     lintOnSave:false,
-    outputDir:'mainproject',
     devServer:{
         port:9100,
         headers: {
@@ -24,7 +23,8 @@ module.exports = {
             }]);
         config.output
             .libraryTarget('umd')
-            .library('main-project')
+            .library('')
+            .jsonpFunction('webpackJsonp_main_project')
     },
     css:{
         loaderOptions:{

@@ -38,14 +38,21 @@
                     }
                 }).then(res => {
                     const resData = res.data;
+                    document.cookie="venderId=10004"
+                    document.cookie="zone_id=1000"
+                    document.cookie="VSSSESSID=needaamu3ffri2e1bd5nfn1ok7"
+                    document.cookie="lshLogin=1"
+                    document.cookie="warehouse_id=DC10004"
+                    document.cookie="MISSESSID=22rqf7hm35gus6ih53h7h7ifd0"
+                    this.$router.push('/')
                     if(resData.ret + '' === '0') {
-                        document.cookie="venderId=10004"
-                        document.cookie="zone_id=1000"
-                        document.cookie="VSSSESSID=needaamu3ffri2e1bd5nfn1ok7"
-                        document.cookie="lshLogin=1"
-                        document.cookie="warehouse_id=DC10004"
-                        document.cookie="MISSESSID=22rqf7hm35gus6ih53h7h7ifd0"
-                        this.$router.push('/')
+                        // document.cookie="venderId=10004"
+                        // document.cookie="zone_id=1000"
+                        // document.cookie="VSSSESSID=needaamu3ffri2e1bd5nfn1ok7"
+                        // document.cookie="lshLogin=1"
+                        // document.cookie="warehouse_id=DC10004"
+                        // document.cookie="MISSESSID=22rqf7hm35gus6ih53h7h7ifd0"
+                        // this.$router.push('/')
                     }else {
                         this.$message.error(resData.msg);
                     }

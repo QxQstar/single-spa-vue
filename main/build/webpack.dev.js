@@ -12,11 +12,6 @@ module.exports =  {
         },
         disableHostCheck: true
     },
-    // module: {
-    //     rules: [
-    //         { parser: { system: false } }
-    //     ]
-    // },
     plugins:[
         new HtmlWebpackPlugin({
             title:'single-spa 微前端项目',

@@ -8,7 +8,6 @@ module.exports = {
         },
     },
     publicPath:process.env.VUE_APP_publicPath,
-    outputDir:'customers',
     chainWebpack: config => {
         if(process.env.VUE_APP_SINGLERUN !== 'true'){
             config.externals(['vue', {'vue-router':'vueRouter'},'hytools'])
@@ -24,7 +23,8 @@ module.exports = {
             }]);
         config.output
             .libraryTarget('umd')
-            .library('customers')
+            .library('')
+            .jsonpFunction('webpackJsonp_customers')
     },
     css:{
     loaderOptions:{
