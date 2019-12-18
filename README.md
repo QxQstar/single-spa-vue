@@ -19,6 +19,10 @@
 
 ![基于single-spa的vue微前端项目结构](./img/project-construction.png)
 
+# 在线访问地址
+
+[在线访问地址](http://microfrontend.heyudesign.cn/#/customers/list)
+
 # 需要解决的问题
 
 1. 子项目的注册、异步加载和生命周期管理；
