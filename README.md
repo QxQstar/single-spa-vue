@@ -21,7 +21,7 @@
 
 # 在线访问地址
 
-[在线访问地址](http://microfrontend.heyudesign.cn/#/customers/list)
+[在线访问地址](http://microfrontend.heyudesign.cn)
 
 # 需要解决的问题
 
