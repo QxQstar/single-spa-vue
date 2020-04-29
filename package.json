@@ -4,7 +4,6 @@
   "description": " 基于single-spa的vue微前端项目",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "install:all": "cnpm i && cd customers && cnpm i && cd ../goods && cnpm i && cd ../main && cnpm i && cd ../mian-project && cnpm i",
     "start": "concurrently \"npm run start:main\" \"npm run start:goods\" \"npm run start:customers\" \"npm run start:mian-project\"",
     "start:goods": "cd goods && npm run serve",
