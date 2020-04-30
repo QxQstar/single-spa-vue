@@ -1,7 +1,21 @@
-# .travis.yml
-language: node_js   #前端工程所以是JavaScript，编译环境是node_js
+language: node_js
 node_js:
-  - '8'   #指定node版本
+- '12'
 branchs:
   only:
-    - master  #指定只有检测到master分支有变动时才执行任务
+  - master
+install:
+  - npm run install:all
+script:
+  - npm run build
+cache:
+  npm: false
+addons:
+  ssh_known_hosts:
+  - 122.152.199.134
+before_install:
+- openssl aes-256-cbc -K $encrypted_04674a2f3de9_key -iv $encrypted_04674a2f3de9_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+after_success:
+- chmod 600 ~/.ssh/id_rsa
+- ssh travis@122.152.199.134 -o StrictHostKeyChecking=no 'cd ~/single-spa-vue && git pull && npm run install:all && npm run build'
